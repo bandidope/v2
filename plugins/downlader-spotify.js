@@ -6,7 +6,7 @@ let handler = async (m, { conn, args, command, usedPrefix}) => {
   if (!text) {
     return m.reply(
       `╭─⬣「 *Eazzy X AI* 」⬣
-│ ≡◦ 🎧 *Uso correcto del comando:*
+│ ≡◦ 🎧 *Uso correcto del comando*
 │ ≡◦ ${usedPrefix + command} shakira soltera
 ╰─⬣\n> © Eazzy X AI`
 );
