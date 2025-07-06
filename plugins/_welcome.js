@@ -20,7 +20,7 @@ export async function before(m, { conn, participants, groupMetadata }) {
 
     // 🎉 Bienvenida
     if (chat.bienvenida && m.messageStubType === WAMessageStubType.GROUP_PARTICIPANT_ADD) {
-      const welcomeText = ` 𝗘𝗮𝘇𝘇𝘆 𝗫 𝗔𝘃𝗶𝘀𝗮 🤍\n\n🫴🏼𝗕𝗶𝗲𝗻𝘃𝗲𝗻𝗶𝗱𝗼 : *${user}!*\n🔱𝗚𝗿𝘂𝗽𝗼 : *${groupName}*\n💨𝗗𝗲𝘀𝗰𝗿𝗶𝗽𝗰𝗶𝗼𝗻 : *${groupDesc}*`;
+      const welcomeText = ` 𝗘𝗮𝘇𝘇𝘆 𝗫 𝗔𝘃𝗶𝘀𝗮 🤍\n\n🫴🏼𝗕𝗶𝗲𝗻𝘃𝗲𝗻𝗶𝗱𝗼 : *${user}*\n🔱𝗚𝗿𝘂𝗽𝗼 : *${groupName}*\n💨𝗗𝗲𝘀𝗰𝗿𝗶𝗽𝗰𝗶𝗼𝗻 : *${groupDesc}*`;
 
       await conn.sendMessage(m.chat, { 
         image: imgBuffer, 
