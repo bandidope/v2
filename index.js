@@ -64,7 +64,7 @@ function start(file) {
 
   child.on('exit', (code) => {
     isRunning = false;
-    console.error('🚩 Error :\n', code);
+    console.error(' Error :\n', code);
     process.exit();
   });
 
