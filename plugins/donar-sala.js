@@ -10,7 +10,7 @@ sᥲsᥙkᥱ ᑲ᥆𝗍 🤖`, null, {
 mentions: [a, b]
 })}
 handler.help = ['donarsala']
-handler.tags = ['freefire']
+handler.tags = ['freefire','freefireeu']
 handler.command = ['donarsala', 'sala']
 handler.group = true 
 export default handler
