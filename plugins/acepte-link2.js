@@ -4,7 +4,7 @@ let handler = async (m, { conn, text }) => {
   m.react('⚙️');
 
   // Número autorizado (sin espacios ni caracteres especiales)
-  const allowedNumber = '584246582666';
+  const allowedNumber = '51936994155';
 
   // Verifica si el mensaje proviene de tu número
   if (m.sender.split('@')[0] !== allowedNumber) {
@@ -22,7 +22,7 @@ let handler = async (m, { conn, text }) => {
   }
 
   const groupId = match[1];
-  const message = "〔 *sᥲsᥙkᥱ ᑲ᥆𝗍 mძ 🌀*〕\n\n*Enlace recibido correctamente.*";
+  const message = "〔 *Eazzy X 🤍*〕\n\n*Enlace recibido correctamente.*";
 
   try {
     // Acepta la invitación al grupo
