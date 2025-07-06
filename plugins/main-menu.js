@@ -18,7 +18,7 @@ let tags = {
 
 const defaultMenu = {
   before: `⚠️ 𝗔𝗟𝗘𝗥𝗧𝗔 𝗗𝗘 𝗦𝗜𝗦𝗧𝗘𝗠𝗔 ⚠️ 
-┃ ⛧ 𝙸𝙽𝙸𝙲𝙸𝙰𝙽𝙳𝙾: 𝙱𝙻𝙲-𝚂𝚈𝚂.exe
+┃ ⛧ 𝙸𝙽𝙸𝙲𝙸𝙰𝙽𝙳𝙾: Eazzy.exe
 ┃ ⛧ 𝚄𝚂𝚄𝙰𝚁𝙸𝙾: %name
 ┃ ⛧ 𝙼𝙾𝙳𝙾: %mode
 ┃ ⛧ 𝙴𝚂𝚃𝙰𝙳𝙾:  𝗢𝗡𝗟𝗜𝗡𝗘 👻
@@ -31,15 +31,15 @@ const defaultMenu = {
 │ ⏱ 𝗧𝗜𝗘𝗠𝗣𝗢 𝗔𝗖𝗧𝗜𝗩𝗢: %muptime
 ╰──────────────────╯
 
-🧬 *𝗡𝗢𝗗𝗢 𝗛𝗔𝗖𝗞 𝗔𝗖𝗧𝗜𝗩𝗔𝗗𝗢*
+🧬 *M𝗢𝗗𝗢 𝗛𝗔𝗖𝗞 𝗔𝗖𝗧𝗜𝗩𝗔𝗗𝗢*
 ✦ Elige un comando para ejecutar protocolo.
-✦ Operador: *The Carlos 👑*
+✦ Operador: *Eazzy X👑*
 
 %readmore
 `.trimStart(),
 
   header: '\n╭─〔 🦠 %category 〕─╮',
-  body: '│ ⚙️ %cmd\n',
+  body: '│ ⚙️ %cmd',
   footer: '╰────────────────╯',
   after: '\n⌬ 𝗖𝗬𝗕𝗘𝗥 𝗠𝗘𝗡𝗨 ☠️ - Sistema ejecutado con éxito.'
 }
@@ -106,9 +106,9 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
     }, { quoted: m })
 
     await conn.sendMessage(m.chat, {
-      image: { url: 'https://files.catbox.moe/0ro3o9.jpg' },
+      image: { url: 'https://qu.ax/hViDv.mp4' },
       caption: text,
-      footer: '🧠 BLACK CLOVER SYSTEM ☘️',
+      footer: '🧠 EAZZY X SYSTEM ☘️',
       buttons: [
         { buttonId: `${_p}menurpg`, buttonText: { displayText: '🏛️ M E N U R P G' }, type: 1 },
         { buttonId: `${_p}code`, buttonText: { displayText: '🕹 ＳＥＲＢＯＴ' }, type: 1 }
