@@ -7,7 +7,7 @@ handler.help = ['buscarvsmixto'];
 export default handler;
 handler.admin = true
 handler.group = true
-handler.botAdmin = true
+handler.botAdmin = false
 
 global.bsmixto = `
 👺⋆ ☇  𝘽𝙐𝙎𝘾𝙊 𝙑𝙎 𝙈𝙄𝙓𝙏𝙊  🎀🌩️
