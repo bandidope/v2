@@ -20,7 +20,7 @@ export async function before(m, { conn, participants, groupMetadata }) {
 
     // 🎉 Bienvenida
     if (chat.bienvenida && m.messageStubType === WAMessageStubType.GROUP_PARTICIPANT_ADD) {
-      const welcomeText = `🎊 *¡Bienvenido, ${user}!* 🎊\n✨ *Has entrado a* ${groupName}.\n📢 *Descripción:* ${groupDesc}\n🚀 *Disfruta tu estancia y sigue las reglas!*`;
+      const welcomeText = ` 𝗘𝗮𝘇𝘇𝘆 𝗫 𝗔𝘃𝗶𝘀𝗮 🤍\n\n🫴🏼𝗕𝗶𝗲𝗻𝘃𝗲𝗻𝗶𝗱𝗼 : ${user}!*\n🔱𝗚𝗿𝘂𝗽𝗼 : ${groupName}.\n💨𝗗𝗲𝘀𝗰𝗿𝗶𝗽𝗰𝗶𝗼𝗻 : ${groupDesc}`;
 
       await conn.sendMessage(m.chat, { 
         image: imgBuffer, 
@@ -29,7 +29,7 @@ export async function before(m, { conn, participants, groupMetadata }) {
       });
     }
     if (chat.bienvenida && m.messageStubType === WAMessageStubType.GROUP_PARTICIPANT_LEAVE) {
-      const goodbyeText = `👋 *${user} ha decidido salir del grupo.*\n✨ *Esperamos verte nuevamente en* ${groupName}!`;
+      const goodbyeText = `🤍 𝗘𝗮𝘇𝘇𝘆 𝗫 𝗔𝘃𝗶𝘀𝗮 🤍\n\n🫴🏼𝗨𝘀𝘂𝗮𝗿𝗶𝗼 𝗞𝗶𝗰𝗸 : ${user}\n🔱𝗚𝗿𝘂𝗽𝗼 :${groupName}`;
 
       await conn.sendMessage(m.chat, { 
         image: imgBuffer, 
@@ -38,7 +38,7 @@ export async function before(m, { conn, participants, groupMetadata }) {
       });
     }
     if (chat.bienvenida && m.messageStubType === WAMessageStubType.GROUP_PARTICIPANT_REMOVE) {
-      const kickText = `🚨 *${user} ha sido expulsado del grupo!* 🚨\n❌ *Eliminado de* ${groupName}.\n⚡ *Sigue las normas para evitar futuras sanciones.*`;
+      const kickText = `🤍 𝗘𝗮𝘇𝘇𝘆 𝗫 𝗔𝘃𝗶𝘀𝗮 🤍\n\n🫴🏼𝗨𝘀𝘂𝗮𝗿𝗶𝗼 𝗞𝗶𝗰𝗸 : ${user}\n🔱𝗚𝗿𝘂𝗽𝗼 :${groupName}`;
 
       await conn.sendMessage(m.chat, { 
         image: imgBuffer, 
