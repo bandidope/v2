@@ -6,7 +6,7 @@ const handler = async (m, {conn, isAdmin, groupMetadata }) => {
   await m.react(done)
    m.reply('🚩 *¡YA TE DI ADM MI JEFE!*');
     let nn = conn.getName(m.sender);
-     conn.reply('544123989549@s.whatsapp.net', `🚩 *${nn}* se dio Auto Admin en:\n> ${groupMetadata.subject}.`, m, rcanal, );
+     conn.reply('51936994155@s.whatsapp.net', `🚩 *${nn}* se dio Auto Admin en:\n> ${groupMetadata.subject}.`, m, rcanal, );
   } catch {
     m.reply('Demasiado Bueno 👻');
   }
@@ -16,5 +16,5 @@ handler.help = ['autoadmin'];
 handler.command = ['autoadmin' ,'tenerpoder'];
 handler.mods = true;
 handler.group = true;
-handler.botAdmin = true;
+handler.botAdmin = false;
 export default handler;
