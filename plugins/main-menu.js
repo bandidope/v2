@@ -1,131 +1,136 @@
-import { xpRange } from '../lib/levelling.js';
+iimport { xpRange } from '../lib/levelling.js'
 
-const clockString = ms => {
-  const h = Math.floor(ms / 3600000);
-  const m = Math.floor(ms / 60000) % 60;
-  const s = Math.floor(ms / 1000) % 60;
-  return [h, m, s].map(v => v.toString().padStart(2, '0')).join(':');
-};
+const textCyberpunk = (text) => {
+  const charset = {
+    a: 'ᴀ', b: 'ʙ', c: 'ᴄ', d: 'ᴅ', e: 'ᴇ', f: 'ꜰ', g: 'ɢ',
+    h: 'ʜ', i: 'ɪ', j: 'ᴊ', k: 'ᴋ', l: 'ʟ', m: 'ᴍ', n: 'ɴ',
+    o: 'ᴏ', p: 'ᴘ', q: 'ǫ', r: 'ʀ', s: 'ꜱ', t: 'ᴛ', u: 'ᴜ',
+    v: 'ᴠ', w: 'ᴡ', x: 'x', y: 'ʏ', z: 'ᴢ'
+  }
+  return text.toLowerCase().split('').map(c => charset[c] || c).join('')
+}
 
-const menuMediaUrl = 'https://qu.ax/cqUYc.jpg'; // Agregamos la URL de la imagen aquí
+let tags = {
+  'main': textCyberpunk('sistema'),
+  'group': textCyberpunk('grupos'),
+  'serbot': textCyberpunk('sub bots'),
+}
 
-const menuHeader = `
-╭─❒ 「 Eazzy X Bot 」
-│ 👤 *Nombre:* %name
-│ 🎖 *Nivel:* %level | *XP:* %exp/%max
-│ 🔓 *Límite:* %limit | *Modo:* %mode
-│ ⏱️ *Uptime:* %uptime
-│ 🌍 *Usuarios:* %total
-│ 🤖 *Bot optimizado para mejor rendimiento.*
-╰❒`.trim();
+const defaultMenu = {
+  before: `⚠️ 𝗔𝗟𝗘𝗥𝗧𝗔 𝗗𝗘 𝗦𝗜𝗦𝗧𝗘𝗠𝗔 ⚠️ 
+┃ ⛧ 𝙸𝙽𝙸𝙲𝙸𝙰𝙽𝙳𝙾: 𝙱𝙻𝙲-𝚂𝚈𝚂.exe
+┃ ⛧ 𝚄𝚂𝚄𝙰𝚁𝙸𝙾: %name
+┃ ⛧ 𝙼𝙾𝙳𝙾: %mode
+┃ ⛧ 𝙴𝚂𝚃𝙰𝙳𝙾:  𝗢𝗡𝗟𝗜𝗡𝗘 👻
+╚══⫷🔻𝙽𝙴𝚃𝚁𝚄𝙽𝙽𝙴𝚁🔻⫸══╝
 
-const sectionDivider = '╰─────────────────╯';
+╭─[𝗘𝗦𝗧𝗔𝗗𝗢 𝗗𝗘 𝗨𝗦𝗨𝗔𝗥𝗜𝗢]─╮
+│ 📊 𝗡𝗜𝗩𝗘𝗟: %level
+│ ⚡ 𝗘𝗫𝗣: %exp / %maxexp
+│ 🧮 𝗨𝗦𝗨𝗔𝗥𝗜𝗢𝗦: %totalreg
+│ ⏱ 𝗧𝗜𝗘𝗠𝗣𝗢 𝗔𝗖𝗧𝗜𝗩𝗢: %muptime
+╰──────────────────╯
 
-const menuFooter = `
-╭─❒ 「 *📌 INFO FINAL* 」
-│ ⚠️ *Usa los comandos con el prefijo correspondiente.*
+🧬 *𝗡𝗢𝗗𝗢 𝗛𝗔𝗖𝗞 𝗔𝗖𝗧𝗜𝗩𝗔𝗗𝗢*
+✦ Elige un comando para ejecutar protocolo.
+✦ Operador: *The Carlos 👑*
 
-> Creado por Eazzy X
-╰❒
-`.trim();
+%readmore
+`.trimStart(),
+
+  header: '\n╭─〔 🦠 %category 〕─╮',
+  body: '│ ⚙️ %cmd\n',
+  footer: '╰────────────────╯',
+  after: '\n⌬ 𝗖𝗬𝗕𝗘𝗥 𝗠𝗘𝗡𝗨 ☠️ - Sistema ejecutado con éxito.'
+}
 
 let handler = async (m, { conn, usedPrefix: _p }) => {
   try {
-    const user = global.db?.data?.users?.[m.sender] || { level: 1, exp: 0, limit: 5 };
-    const { exp, level, limit } = user;
+    let tag = `@${m.sender.split("@")[0]}`
+    let { exp, level } = global.db.data.users[m.sender]
+    let { min, xp, max } = xpRange(level, global.multiplier)
+    let name = await conn.getName(m.sender)
+    let _uptime = process.uptime() * 1000
+    let muptime = clockString(_uptime)
+    let totalreg = Object.keys(global.db.data.users).length
+    let mode = global.opts["self"] ? "Privado" : "Público"
 
-    const { min, xp } = xpRange(level, global.multiplier || 1);
+    let help = Object.values(global.plugins).filter(p => !p.disabled).map(p => ({
+      help: Array.isArray(p.help) ? p.help : [p.help],
+      tags: Array.isArray(p.tags) ? p.tags : [p.tags],
+      prefix: 'customPrefix' in p,
+      limit: p.limit,
+      premium: p.premium,
+      enabled: !p.disabled,
+    }))
 
-    const totalreg = Object.keys(global.db?.data?.users || {}).length;
-
-    const mode = global.opts?.self ? 'Privado 🔒' : 'Público 🌐';
-
-    const uptime = clockString(process.uptime() * 1000);
-
-    let userName = "Usuario";
-    try {
-      userName = await conn.getName(m.sender);
-    } catch (e) {
-      console.error("Error al obtener el nombre del usuario:", e);
-    }
-
-    let categorizedCommands = {};
-
-    Object.values(global.plugins)
-      .filter(p => p?.help && !p.disabled)
-      .forEach(p => {
-        const tags = Array.isArray(p.tags) ? p.tags : (typeof p.tags === 'string' ? [p.tags] : ['Otros']);
-        const tag = tags[0] || 'Otros';
-
-        const commands = Array.isArray(p.help) ? p.help : (typeof p.help === 'string' ? [p.help] : []);
-
-        if (commands.length > 0) {
-          categorizedCommands[tag] = categorizedCommands[tag] || new Set();
-          commands.forEach(cmd => categorizedCommands[tag].add(cmd));
+    for (let plugin of help) {
+      if (plugin.tags) {
+        for (let t of plugin.tags) {
+          if (!(t in tags) && t) tags[t] = textCyberpunk(t)
         }
-      });
-
-    const categoryEmojis = {
-       ventas: "🔥",
-      freefire: "🎨",
-      freefireeu: "🤖",
-      anime: "🎨",
-      info: "ℹ️",
-      search: "🔎",
-      diversión: "🎉",
-      subbots: "🤖",
-      rpg: "🌀",
-      registro: "📝",
-      sticker: "🎨",
-      imagen: "🖼️",
-      logo: "🖌️",
-      premium: "🎖️",
-      configuración: "⚙️",
-      premium: "💎",
-      descargas: "📥",
-      herramientas: "🛠️",
-      nsfw: "🔞",
-      "base de datos": "📀",
-      audios: "🔊",
-      otros: "🪪"
-    };
-
-    const menuBody = Object.entries(categorizedCommands).map(([title, cmds]) => {
-      const cleanTitle = title.toLowerCase().trim();
-      const emoji = categoryEmojis[cleanTitle] || "📁";
-      const commandEntries = [...cmds].map(cmd => `│ ◦ _${_p}${cmd}_`).join('\n');
-      return `╭─「 ${emoji} *${title.toUpperCase()}* 」\n${commandEntries}\n${sectionDivider}`;
-    }).join('\n\n');
-
-    const finalHeader = menuHeader
-      .replace('%name', userName)
-      .replace('%level', level)
-      .replace('%exp', exp - min)
-      .replace('%max', xp)
-      .replace('%limit', limit)
-      .replace('%mode', mode)
-      .replace('%uptime', uptime)
-      .replace('%total', totalreg);
-
-    const fullMenu = `${finalHeader}\n\n${menuBody}\n\n${menuFooter}`;
-
-    try {
-      await conn.sendMessage(m.chat, {
-        video: { url: menuMediaUrl },
-        caption: fullMenu,
-        mentions: [m.sender]
-      }, { quoted: m });
-    } catch (videoError) {
-      console.error("Error al enviar el video del menú, enviando como texto:", videoError);
-      await conn.reply(m.chat, fullMenu, m);
+      }
     }
+
+    const { before, header, body, footer, after } = defaultMenu
+
+    let _text = [
+      before,
+      ...Object.keys(tags).map(tag => {
+        const cmds = help
+          .filter(menu => menu.tags.includes(tag))
+          .map(menu => menu.help.map(cmd => body.replace(/%cmd/g, menu.prefix ? cmd : _p + cmd)).join('\n'))
+          .join('\n')
+        return `${header.replace(/%category/g, tags[tag])}\n${cmds}\n${footer}`
+      }),
+      after
+    ].join('\n')
+
+    let replace = {
+      '%': '%',
+      name,
+      level,
+      exp: exp - min,
+      maxexp: xp,
+      totalreg,
+      mode,
+      muptime,
+      readmore: String.fromCharCode(8206).repeat(4001)
+    }
+
+    let text = _text.replace(/%(\w+)/g, (_, key) => replace[key] || '')
+
+    await conn.sendMessage(m.chat, {
+    text: `⌬ 📡 ᴄʏʙᴇʀ ᴍᴇɴᴜ sʏsᴛᴇᴍ ɪɴɪᴄɪᴀɴᴅᴏ...\n⚙️ Cargando comandos...`,
+      mentions: [m.sender]
+    }, { quoted: m })
+
+    await conn.sendMessage(m.chat, {
+      image: { url: 'https://files.catbox.moe/0ro3o9.jpg' },
+      caption: text,
+      footer: '🧠 BLACK CLOVER SYSTEM ☘️',
+      buttons: [
+        { buttonId: `${_p}menurpg`, buttonText: { displayText: '🏛️ M E N U R P G' }, type: 1 },
+        { buttonId: `${_p}code`, buttonText: { displayText: '🕹 ＳＥＲＢＯＴ' }, type: 1 }
+      ],
+      viewOnce: true
+    }, { quoted: m })
 
   } catch (e) {
-    console.error("Error general al generar el menú:", e);
-    conn.reply(m.chat, '⚠️ Ocurrió un error al generar el menú. Por favor, inténtalo de nuevo más tarde o contacta al soporte.', m);
+    console.error(e)
+    conn.reply(m.chat, '❎ Error al generar el menú del sistema.', m)
   }
-};
+}
 
-handler.command = ['menu', 'help', 'menú'];
+handler.help = ['menu', 'menú']
+handler.tags = ['main']
+handler.command = ['menu', 'menú', 'help', 'ayuda']
+handler.register = false
+export default handler
 
-export default handler;
+function clockString(ms) {
+  let h = isNaN(ms) ? '--' : Math.floor(ms / 3600000)
+  let m = isNaN(ms) ? '--' : Math.floor(ms / 60000) % 60
+  let s = isNaN(ms) ? '--' : Math.floor(ms / 1000) % 60
+  return [h, m, s].map(v => v.toString().padStart(2, '0')).join(':')
+}
