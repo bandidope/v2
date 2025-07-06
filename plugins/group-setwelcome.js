@@ -16,7 +16,7 @@ let handler = async (m, { conn, text, isROwner, isOwner }) => {
 
     if (text) {
         global.db.data.chats[m.chat].sWelcome = text;
-        // **THIS IS THE KEY FIX:** Save the database after modification
+        // **THIS IS THE KEY FIX:** Save the database after
         await global.db.write(); 
         conn.reply(m.chat, '_*LA BIENVENIDA DEL GRUPO HA SIDO CONFIGURADA*_', fkontak, m);
     } else {
