@@ -11,7 +11,7 @@ const textCyberpunk = (text) => {
 }
 
 let tags = {
-  'venta': textCyberpunk('Ventas'),
+  'ventas': textCyberpunk('Ventas'),
   'freefire': textCyberpunk('Free Fire Sur'),
   'freefireeu': textCyberpunk('Free Fire Eu'),
 }
@@ -109,9 +109,6 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
       image: { url: 'https://qu.ax/cqUYc.jpg' },
       caption: text,
       footer: '🧠 EAZZY X SYSTEM ☘️',
-      buttons: [
-        { buttonId: `${_p}menurpg`, buttonText: { displayText: '🏛️ v e n t a' }, type: 1 },
-      ],
       viewOnce: true
     }, { quoted: m })
 
