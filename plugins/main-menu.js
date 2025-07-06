@@ -34,9 +34,7 @@ const defaultMenu = {
 🧬 *M𝗢𝗗𝗢 𝗛𝗔𝗖𝗞 𝗔𝗖𝗧𝗜𝗩𝗔𝗗𝗢*
 ✦ Elige un comando para ejecutar protocolo.
 ✦ Operador: *Eazzy X👑*
-
-%readmore
-`.trimStart(),
+%readmore`.trimStart(),
 
   header: '\n╭─〔 🦠 %category 〕─╮',
   body: '│ ⚙️ %cmd',
