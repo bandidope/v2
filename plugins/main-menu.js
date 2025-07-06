@@ -7,18 +7,17 @@ const clockString = ms => {
   return [h, m, s].map(v => v.toString().padStart(2, '0')).join(':');
 };
 
-const menuMediaUrl = 'https://qu.ax/Zphmw.jpg'; // Agregamos la URL de la imagen aquí
+const menuMediaUrl = 'https://qu.ax/cqUYc.jpg'; // Agregamos la URL de la imagen aquí
 
 const menuHeader = `
-╭─❒ 「 sᥲsᥙkᥱ ᑲ᥆𝗍 mძ 🌀 」
+╭─❒ 「 Eazzy X Bot 」
 │ 👤 *Nombre:* %name
 │ 🎖 *Nivel:* %level | *XP:* %exp/%max
 │ 🔓 *Límite:* %limit | *Modo:* %mode
 │ ⏱️ *Uptime:* %uptime
 │ 🌍 *Usuarios:* %total
 │ 🤖 *Bot optimizado para mejor rendimiento.*
-╰❒
-`.trim();
+╰❒`.trim();
 
 const sectionDivider = '╰─────────────────╯';
 
@@ -26,7 +25,7 @@ const menuFooter = `
 ╭─❒ 「 *📌 INFO FINAL* 」
 │ ⚠️ *Usa los comandos con el prefijo correspondiente.*
 
-> Creado por Barboza-Team
+> Creado por Eazzy X
 ╰❒
 `.trim();
 
@@ -67,7 +66,10 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
       });
 
     const categoryEmojis = {
-      anime: "🎭",
+       ventas: "🔥",
+      freefire: "🎨",
+      freefireeu: "🤖",
+      anime: "🎨",
       info: "ℹ️",
       search: "🔎",
       diversión: "🎉",
@@ -85,7 +87,6 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
       nsfw: "🔞",
       "base de datos": "📀",
       audios: "🔊",
-      "free fire": "🔥",
       otros: "🪪"
     };
 
