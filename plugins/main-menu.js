@@ -1,4 +1,4 @@
-iimport { xpRange } from '../lib/levelling.js'
+import { xpRange } from '../lib/levelling.js'
 
 const textCyberpunk = (text) => {
   const charset = {
