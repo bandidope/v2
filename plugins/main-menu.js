@@ -11,9 +11,9 @@ const textCyberpunk = (text) => {
 }
 
 let tags = {
-  'main': textCyberpunk('sistema'),
-  'group': textCyberpunk('grupos'),
-  'serbot': textCyberpunk('sub bots'),
+  'venta': textCyberpunk('Ventas'),
+  'freefire': textCyberpunk('Free Fire Sur'),
+  'freefireeu': textCyberpunk('Free Fire Eu'),
 }
 
 const defaultMenu = {
