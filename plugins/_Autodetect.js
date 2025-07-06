@@ -6,32 +6,32 @@ const WAMessageStubType = baileys.default;
 export async function before(m, { conn, participants, groupMetadata}) {
   if (!m.messageStubType ||!m.isGroup) return;
 
-  const fkontak = {
-    "key": {
-      "participants": "0@s.whatsapp.net",
-      "remoteJid": "status@broadcast",
-      "fromMe": false,
-      "id": "Halo"
+  const mikuContact = {
+    key: {
+      participants: '0@s.whatsapp.net',
+      remoteJid: 'status@broadcast',
+      fromMe: false,
+      id: 'Eazzy X Bot 🔱'
 },
-    "message": {
-      "contactMessage": {
-        "vcard": `BEGIN:VCARD
+    message: {
+      contactMessage: {
+        vcard: `BEGIN:VCARD
 VERSION:3.0
-N:Sy;Bot;;;
-FN:y
+N:Miku;Bot;;;
+FN:Eazzy X Bot 🔱
 item1.TEL;waid=${m.sender.split('@')[0]}:${m.sender.split('@')[0]}
-item1.X-ABLabel:Ponsel
+item1.X-ABLabel:Celular
 END:VCARD`
 }
 },
-    "participant": "0@s.whatsapp.net"
+    participant: '0@s.whatsapp.net'
 };
 
-  let chat = global.db.data.chats[m.chat];
-  let usuario = participants.find(p => p.id === m.sender)?.name || `@${m.sender.split`@`[0]}`;
-  let pp = await conn.profilePictureUrl(m.chat, 'image').catch(_ => null) || 'https://files.catbox.moe/xr2m6u.jpg';
+  const chat = global.db.data.chats[m.chat];
+  const usuario = participants.find(p => p.id === m.sender)?.name || `@${m.sender.split`@`[0]}`;
+  const img = await conn.profilePictureUrl(m.chat, 'image').catch(_ => null) || 'https://files.catbox.moe/xr2m6u.jpg';
 
- const eventos = {
+  const eventos = {
     21: {
       mensaje: `🤍 𝗘𝗮𝘇𝘇𝘆 𝗫 𝗔𝘃𝗶𝘀𝗮 🤍\n\n- 𝗡𝘂𝗲𝘃𝗼 𝗡𝗼𝗺𝗯𝗿𝗲 : ${m.messageStubParameters[0]}\n- 𝗨𝘀𝘂𝗮𝗿𝗶𝗼 : ${usuario}`,
       tipo: 'texto'
