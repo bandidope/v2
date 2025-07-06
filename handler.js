@@ -162,7 +162,7 @@ export async function handler(chatUpdate) {
         const sendNum = m?.sender?.replace(/[^0-9]/g, '')
         const isROwner = [conn.decodeJid(global.conn?.user?.id), ...global.owner?.map(([number]) => number)].map(v => (v || '').replace(/[^0-9]/g, '')).includes(sendNum)
 
-// WillZek Estuvo Aqui 💙
+// WillZek Estuvo Aqui 
 const botIds = [
   this?.decodeJid?.(this?.user?.id),
   ...(global.owner?.map(([n]) => n) || [])
