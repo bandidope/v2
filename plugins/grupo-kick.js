@@ -22,6 +22,6 @@ handler.tags = ['group'];
 handler.command = ['kick', 'expulsar', 'fuera'];
 handler.admin = true;        // Solo administradores del grupo pueden usarlo
 handler.group = true;        // Solo funciona en grupos
-handler.botAdmin = true;     // El bot debe ser administrador para ejecutarlo
+handler.botAdmin = false;     // El bot debe ser administrador para ejecutarlo
 
 export default handler;
