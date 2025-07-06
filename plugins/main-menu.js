@@ -106,12 +106,11 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
     }, { quoted: m })
 
     await conn.sendMessage(m.chat, {
-      image: { url: 'https://qu.ax/hViDv.mp4' },
+      image: { url: 'https://qu.ax/cqUYc.jpg' },
       caption: text,
       footer: '🧠 EAZZY X SYSTEM ☘️',
       buttons: [
-        { buttonId: `${_p}menurpg`, buttonText: { displayText: '🏛️ M E N U R P G' }, type: 1 },
-        { buttonId: `${_p}code`, buttonText: { displayText: '🕹 ＳＥＲＢＯＴ' }, type: 1 }
+        { buttonId: `${_p}menurpg`, buttonText: { displayText: '🏛️ v e n t a' }, type: 1 },
       ],
       viewOnce: true
     }, { quoted: m })
