@@ -109,7 +109,7 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
       image: { url: 'https://qu.ax/cqUYc.jpg' },
       caption: text,
       footer: '🧠 EAZZY X SYSTEM ☘️',
-      viewOnce: true
+      viewOnce: false
     }, { quoted: m })
 
   } catch (e) {
