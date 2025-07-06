@@ -2,7 +2,7 @@ import PhoneNumber from 'awesome-phonenumber';
 import fetch from 'node-fetch';
 import fs from 'fs';
 
-const imagen1 = 'Eazzy Actualizado V2 🤍';
+const imagen1 = 'https://qu.ax/cqUYc.jpg';
 
 const loadMarriages = () => {
     if (fs.existsSync('./media/database/marry.json')) {
@@ -76,7 +76,7 @@ var handler = async (m, { conn }) => {
 }
 
 handler.help = ['profile'];
-handler.register = false;
+handler.register = true;
 handler.group = false;
 handler.tags = ['rg'];
 handler.command = ['profile', 'perfil'];
