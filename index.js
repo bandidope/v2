@@ -28,12 +28,12 @@ function verify() {
 }
 verify();
 
-say('sᥲsᥙkᥱ ᑲ᥆𝗍', {
+say('Eazzy X v2', {
   font: 'chrome',
   align: 'center',
   colors: ['white']
 });
-say(`Developed By • sᥲsᥙkᥱ ᑲ᥆𝗍 mძ`, {
+say(`Developed By • @KCHA.MOBILES`, {
   font: 'console',
   align: 'center',
   colors: ['magenta']
