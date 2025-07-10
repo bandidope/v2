@@ -230,7 +230,7 @@ para el bot
   }
 
 m.reply(`💻 *_Iniciado Con Exito_:* *${type}*
-💻 *_Modo_:* *${isEnable? '*_Activado ✅_*': '*_Desactivado ❌_*'}*
+💻 *_Modo_:* ${isEnable? '*_Activado ✅_*': '*_Desactivado ❌_*'}
 💻 *_Para_:* ${isAll? '*_Todo el Bot_* 🌐': isUser? '*_Usuario específico_* 👥': '*_Este Chat_* 💬'}`)
 }
 
