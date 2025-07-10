@@ -229,11 +229,9 @@ para el bot
       throw false
   }
 
-m.reply(`💎 *Comando ejecutado:* *${type}*
-👤 *Estado actual:* *${isEnable? 'Activado ✅': 'Desactivado ❌'}*
-📍 *Ámbito:* ${isAll? '*Todo el Bot* 🌐': isUser? '*Usuario específico* 👥': '*Este Chat* 💬'}
-
-🚀 *Muchas gracias por usar sᥲsᥙkᥱ ᑲ᥆𝗍 mძ 🌀*🎖️`)
+m.reply(`💻 *_Iniciado Con Exito_:* *${type}*
+💻 *_Modo_:* *${isEnable? '*_Activado ✅_*': '*_Desactivado ❌_*'}*
+💻 *_Para_:* ${isAll? '*_Todo el Bot_* 🌐': isUser? '*_Usuario específico_* 👥': '*_Este Chat_* 💬'}`)
 }
 
 handler.help = ['enable', 'disable', 'on', 'off']
