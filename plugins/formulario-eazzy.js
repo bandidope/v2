@@ -5,7 +5,7 @@ let handler = async (m, { isPrems, conn }) => {
     }
 
     let img = 'https://qu.ax/cqUYc.jpg'; 
-    let texto = `*_FORMULARIO EAZZY X MASCULINO ☁️_*
+    let texto = `*_FORMULARIO EAZZY X ☁️_*
 
 ● *NOMBRE*: 
 ● *NICK*:   
